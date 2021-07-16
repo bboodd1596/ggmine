@@ -1,7 +1,6 @@
 const express = require('express')
 const axios = require('./axios')
 const crypto = require("crypto");
-const ac = require("@antiadmin/anticaptchaofficial");
 const router = express.Router()
 router.use(bodyParser.urlencoded({ extended: false }));
 router.use(bodyParser.json())
