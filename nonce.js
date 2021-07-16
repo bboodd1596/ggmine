@@ -1,4 +1,5 @@
 const express = require('express')
+const router = express.Router()
 const axios = require('./axios')
 const bodyParser = require('body-parser')
 var cors = require("cors");
@@ -7,8 +8,6 @@ const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');      // devel
 const { TextDecoder, TextEncoder } = require(/*! text-encoding */ "text-encoding");
 const Int64LE = require(/*! int64-buffer */ "int64-buffer").Int64LE;
 const crypto = require("crypto");
-const ac = require("@antiadmin/anticaptchaofficial");
-const router = express.Router()
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -39,7 +38,11 @@ const nameToInt = (name) => {
 
     sb.pushName(name);
 
-    const name_64 = new Int64LE(sb.array);
+    const name_64 = new 
+    
+    
+    
+    (sb.array);
 
     return name_64 + '';
 }
