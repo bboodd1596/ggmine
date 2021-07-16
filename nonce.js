@@ -1,13 +1,10 @@
 const express = require('express')
 const router = express.Router()
 const axios = require('./axios')
-const bodyParser = require('body-parser')
-var cors = require("cors");
-const { Api, JsonRpc, RpcError, Serialize } = require('eosjs');
-const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');      // development 
+const crypto = require("crypto");
+const { Serialize } = require('eosjs');
 const { TextDecoder, TextEncoder } = require(/*! text-encoding */ "text-encoding");
 const Int64LE = require(/*! int64-buffer */ "int64-buffer").Int64LE;
-const crypto = require("crypto");
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
