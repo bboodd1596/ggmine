@@ -92,6 +92,7 @@ const setHash = async (mining_params) => {
     mining_params.account_str = mining_params.account;
     mining_params.account = nameToArray(mining_params.account);
 
+
     // console.log('mining_params', _message)
     const getRand = () => {
         const arr = new Uint8Array(8);
@@ -108,13 +109,12 @@ const setHash = async (mining_params) => {
             .join("");
     };
 
+
     mining_params.account = mining_params.account.slice(0, 8);
 
     const is_wam = mining_params.account_str.substr(-4) === '.wam';
 
     let good = false, itr = 0, rand = 0, hash, hex_digest, rand_arr, last;
-
-    console.log(`last tx is ${mining_params.last_mine_tx}...`);
     const start = (new Date()).getTime();
 
     while (!good) {
@@ -156,7 +156,7 @@ const setHash = async (mining_params) => {
         itr++;
 
         if (itr % 500000 === 0) {
-            console.log(`Still mining - tried ${itr} iterations`);
+            console.log(`Account ${mining_params.account_str}, Still mining - tried ${itr} iterations`);
             const mine_work = { account: mining_params.account_str, rand_str: "0", hex_digest: "0" };
             return mine_work;		
         }
@@ -164,12 +164,15 @@ const setHash = async (mining_params) => {
         if (!good) {
             hash = null;
         }
+
     }
     const end = (new Date()).getTime();
+
     // console.log(sb.array.slice(0, 20));
     // const rand_str = Buffer.from(sb.array.slice(16, 24)).toString('hex');
     const rand_str = toHex(rand_arr);
-    console.log(`rand_str ${rand_str}, taking ${(end - start) / 1000}s`)
+
+    console.log(`Account ${mining_params.account_str}, rand_str ${rand_str}, taking ${(end - start) / 1000}s`)
     const mine_work = { account: mining_params.account_str, rand_str, hex_digest };
     // console.log(mine_work);
     // this.postMessage(mine_work);
