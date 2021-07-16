@@ -4,7 +4,6 @@ const axios = require('./axios')
 const crypto = require("crypto");
 const { Serialize } = require('eosjs');
 const { TextDecoder, TextEncoder } = require("text-encoding");
-const Int64LE = require("int64-buffer").Int64LE;
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -53,21 +52,6 @@ const nameToArray = (name) => {
     sb.pushName(name);
 
     return sb.array;
-}
-
-const intToName = (int) => {
-    int = new Int64LE(int);
-
-    const sb = new Serialize.SerialBuffer({
-        textEncoder: new TextEncoder,
-        textDecoder: new TextDecoder
-    });
-
-    sb.pushArray(int.toArray());
-
-    const name = sb.getName();
-
-    return name;
 }
 
 const mining_account = "m.federation";
