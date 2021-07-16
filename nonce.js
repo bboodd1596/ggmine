@@ -3,8 +3,8 @@ const router = express.Router()
 const axios = require('./axios')
 const crypto = require("crypto");
 const { Serialize } = require('eosjs');
-const { TextDecoder, TextEncoder } = require(/*! text-encoding */ "text-encoding");
-const Int64LE = require(/*! int64-buffer */ "int64-buffer").Int64LE;
+const { TextDecoder, TextEncoder } = require("text-encoding");
+const Int64LE = require("int64-buffer").Int64LE;
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
