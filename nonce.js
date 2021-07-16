@@ -2,9 +2,6 @@ const express = require('express')
 const router = express.Router()
 const axios = require('./axios')
 const crypto = require("crypto");
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json())
-router.use(cors());
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
@@ -14,10 +11,10 @@ router.get('/', (req, res) => {
     res.json({ account: "Hello World" })  // <==== req.body will be a parsed JSON object
 })
 
-router.post('/worker', async (req, res) => {
-    const { account, DiffBagLand, last_mine_tx } = req.body
-    const mine_work = await background_mine(account, DiffBagLand, last_mine_tx);
-    res.json(mine_work)
+router.get('/worker/:account', async (req, res) => {
+    //const { account, DiffBagLand, last_mine_tx } = req.body
+    //const mine_work = await background_mine(account, DiffBagLand, last_mine_tx);
+    res.json(account)
     //return res.status(200).send({ mined: mine_work })
 })
 
