@@ -2,6 +2,9 @@ const express = require('express')
 const router = express.Router()
 const axios = require('./axios')
 const crypto = require("crypto");
+router.use(bodyParser.urlencoded({ extended: false }));
+router.use(bodyParser.json())
+router.use(cors());
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
