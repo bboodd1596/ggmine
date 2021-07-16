@@ -1,17 +1,8 @@
 const express = require('express')
 const axios = require('./axios')
-const bodyParser = require('body-parser')
-var cors = require("cors");
-const { Api, JsonRpc, RpcError, Serialize } = require('eosjs');
-const { JsSignatureProvider } = require('eosjs/dist/eosjs-jssig');      // development 
-const { TextDecoder, TextEncoder } = require(/*! text-encoding */ "text-encoding");
-const Int64LE = require(/*! int64-buffer */ "int64-buffer").Int64LE;
-const crypto = require("crypto");
-const ac = require("@antiadmin/anticaptchaofficial");
+
+
 const router = express.Router()
-router.use(bodyParser.urlencoded({ extended: false }));
-router.use(bodyParser.json())
-router.use(cors());
 
 function getRandom(min, max) {
     return Math.floor(Math.random() * (max - min) + min);
