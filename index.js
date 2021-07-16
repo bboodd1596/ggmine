@@ -24,6 +24,6 @@ app.get('/', (req, res) => {
   res.send('Alienworlds.fun API')
 })
 
-/*app.listen(process.argv[2] || process.env.PORT || port, () => {
+app.listen(process.argv[2] || process.env.PORT || port, () => {
     console.log(`App is listening at ${process.argv[2] || process.env.PORT || port}`);
-});*/
+});
